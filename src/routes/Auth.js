@@ -14,7 +14,7 @@ const Auth = () => {
       } else if(name === password) {
           setPassword(value);
       }
-  }
+  };
 
 
   const onSubmit = (e) => {
