@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import Nweet from "../components/Nweet";
 import { dbService } from "../fbase";
 
-const Home = ({userObj}) => {
+const Home = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
   const [nweets, setNweets] = useState([]);
 
@@ -20,7 +21,7 @@ const Home = ({userObj}) => {
     await dbService.collection("nweets").add({
       text: nweet,
       createdAt: Date.now(),
-      createorId: userObj.uid
+      createorId: userObj.uid,
     });
     setNweet("");
   };
@@ -32,7 +33,7 @@ const Home = ({userObj}) => {
     setNweet(value);
   };
 
-  console.log(nweets)
+  console.log(nweets);
 
   return (
     <div>
@@ -48,9 +49,11 @@ const Home = ({userObj}) => {
       </form>
       <div>
         {nweets.map((nweet) => (
-          <div key={nweet.id}>
-            <h4>{nweet.text}</h4>
-          </div>
+          <Nweet
+            key={nweet.id}
+            nweetObj={nweet}
+            isOwner={nweet.createorId === userObj.uid}
+          />
         ))}
       </div>
     </div>
