@@ -31,7 +31,7 @@ const Home = ({ userObj }) => {
     const nweetObj = {
       text: nweet,
       createdAt: Date.now(),
-      createorId: userObj.uid,
+      creatorId: userObj.uid,
       attachmentUrl,
     };
     await dbService.collection("nweets").add(nweetObj);
