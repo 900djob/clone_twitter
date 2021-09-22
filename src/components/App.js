@@ -26,7 +26,7 @@ function App() {
       uid: user.uid,
       updateProfile: (args) => user.updateProfile(args),
     });
-  }
+  };
   return (
     <>
       {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj}/> : "Initializing..."}
